@@ -1,0 +1,22 @@
+﻿<Window x:Class="CefSharpDebug.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cefWpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+        Title="MainWindow" Height="350" Width="525" WindowState="Maximized">
+    <Grid>
+        <Button x:Name="PopupButton" Content="Open Popup" Height="25" Margin="10" Width="100" Click="PopupButton_OnClick" />
+
+        <Popup x:Name="popup" Height="700" Width="1000" IsOpen="False" Placement="Center" StaysOpen="True" PopupAnimation="Slide"  AllowsTransparency="True">
+            <Border BorderThickness="2" BorderBrush="Black" CornerRadius="3" Background="Azure">
+                <Grid>
+                    <TextBlock Text="Loading...Please wait..." x:Name="LoadingTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    <cefWpf:ChromiumWebBrowser
+                                FrameLoadStart="QueryResultsWebBrowser_OnFrameLoadStart"
+                                FrameLoadEnd="QueryResultsWebBrowser_OnFrameLoadEnd"
+                                Name="queryResultsWebBrowser"
+                                Address="{Binding Url, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </Grid>
+            </Border>
+        </Popup>
+    </Grid>
+</Window>
