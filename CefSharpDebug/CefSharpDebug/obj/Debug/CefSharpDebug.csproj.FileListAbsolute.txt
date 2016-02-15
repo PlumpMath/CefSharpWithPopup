@@ -1,9 +1,3 @@
-C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\bin\Debug\CefSharpDebug.exe.config
-C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\bin\Debug\CefSharpDebug.exe
-C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\bin\Debug\CefSharpDebug.pdb
-C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\bin\Debug\CefSharp.Core.dll
-C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\bin\Debug\CefSharp.dll
-C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\bin\Debug\CefSharp.Wpf.dll
 C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\obj\Debug\CefSharpDebug.csprojResolveAssemblyReference.cache
 C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\obj\Debug\MainWindow.baml
 C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\obj\Debug\MainWindow.g.cs
@@ -12,5 +6,11 @@ C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\o
 C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\obj\Debug\CefSharpDebug.g.resources
 C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\obj\Debug\CefSharpDebug.Properties.Resources.resources
 C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\obj\Debug\CefSharpDebug.csproj.GenerateResource.Cache
+C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\bin\Debug\CefSharpDebug.exe.config
+C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\bin\Debug\CefSharpDebug.exe
+C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\bin\Debug\CefSharpDebug.pdb
+C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\bin\Debug\CefSharp.Core.dll
+C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\bin\Debug\CefSharp.dll
+C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\bin\Debug\CefSharp.Wpf.dll
 C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\obj\Debug\CefSharpDebug.exe
 C:\Users\WKTF64\Documents\GitHub\CefSharpWithPopup\CefSharpDebug\CefSharpDebug\obj\Debug\CefSharpDebug.pdb

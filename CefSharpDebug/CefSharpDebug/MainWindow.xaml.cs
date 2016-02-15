@@ -10,11 +10,15 @@
 namespace CefSharpDebug
 {
     using System;
+    using System.Diagnostics;
     using System.IO;
     using System.Reflection;
     using System.Windows;
+    using System.Windows.Input;
+    using System.Windows.Threading;
 
     using CefSharp;
+    using CefSharp.Wpf;
 
     /// <summary>
     /// Interaction logic for 
@@ -48,9 +52,11 @@ namespace CefSharpDebug
         {
             try
             {
+                //Debugger.Launch();
                 this.InitializeCefSharpWebControl();
                 this.InitializeComponent();
                 this.Loaded += this.MainWindowLoaded;
+                this.GotFocus += this.MainWindow_GotFocus;
             }
             catch (Exception exception)
             {
@@ -59,10 +65,26 @@ namespace CefSharpDebug
         }
 
         /// <summary>
+        /// The main window_ got focus.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        /// <exception cref="NotImplementedException">
+        /// </exception>
+        void MainWindow_GotFocus(object sender, RoutedEventArgs e)
+        {
+            this.queryResultsWebBrowser.Focus();
+        }
+
+        /// <summary>
         /// Gets or sets the URL.
         /// </summary>
         public string Url { get; set; }
-        
+
 
         /// <summary>
         /// The main window loaded.
@@ -77,6 +99,83 @@ namespace CefSharpDebug
         {
             this.DataContext = this;
             this.Url = "www.google.com";
+            this.SetupCefSharpWebControl();
+        }
+
+        /// <summary>
+        /// The setup CEF sharp web control.
+        /// </summary>
+        /// <param name="chromiumWebBrowser">
+        /// The chromium web browser.
+        /// </param>
+        private void SetupCefSharpWebControl()
+        {
+            try
+            {
+                //this.jscallbacksManager = new JavaScriptCallbacksManager(this.queryResultsWebBrowser);
+
+                //// Register the callback object
+                //this.queryResultsWebBrowser.RegisterJsObject("callbackObj", this.reportShareCallbackObject);
+
+                this.queryResultsWebBrowser.FrameLoadEnd += this.ChromiumWebBrowserFrameLoadEnd;
+                this.queryResultsWebBrowser.KeyDown += QueryResultsWebBrowserOnPreviewKeyDown;
+                //IRequestHandler requestHandler = new WebRequestHandler();
+                //this.queryResultsWebBrowser.RequestHandler = requestHandler;
+
+                this.queryResultsWebBrowser.Loaded += this.ChromiumWebBrowserLoaded;
+                this.queryResultsWebBrowser.PreviewTextInput += queryResultsWebBrowser_PreviewTextInput;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(this, exception.Message, "Error");
+            }
+        }
+
+        private void QueryResultsWebBrowserOnPreviewKeyDown(object sender, KeyEventArgs keyEventArgs)
+        {
+            var param = KeyInterop.VirtualKeyFromKey(keyEventArgs.Key);
+
+            this.queryResultsWebBrowser.SendKeyEvent((int)WM.KEYDOWN, param, 0);
+        }
+
+        void queryResultsWebBrowser_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            foreach (var character in e.Text)
+            {
+                this.queryResultsWebBrowser.SendKeyEvent((int)WM.CHAR, character, 0);
+            }
+
+            e.Handled = true;
+        }
+
+        private void ChromiumWebBrowserFrameLoadEnd(object sender, FrameLoadEndEventArgs e)
+        {
+            // JavaScript Callback Manager injects the callback object into Chromium Web browser.
+            Application.Current.Dispatcher.Invoke(new Action(this.Target));
+        }
+
+        /// <summary>
+        /// The target.
+        /// </summary>
+        private void Target()
+        {
+            this.queryResultsWebBrowser.Focus();
+        }
+
+        /// <summary>
+        /// The chromium web browser loaded.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        /// <exception cref="NotImplementedException">
+        /// </exception>
+        private void ChromiumWebBrowserLoaded(object sender, RoutedEventArgs e)
+        {
+            this.queryResultsWebBrowser.Focus();
         }
 
         /// <summary>
@@ -169,5 +268,7 @@ namespace CefSharpDebug
         {
             popup.IsOpen = true;
         }
+
+
     }
 }
