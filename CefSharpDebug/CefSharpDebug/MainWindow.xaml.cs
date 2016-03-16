@@ -98,7 +98,7 @@ namespace CefSharpDebug
         private void MainWindowLoaded(object sender, RoutedEventArgs e)
         {
             this.DataContext = this;
-            this.Url = "www.google.com";
+            this.Url = "http://10.78.15.29:8040/Provisioning/Query/reportPage.aspx?id=a7c12572-c829-456f-98e5-f4a4527c27c9";
             this.SetupCefSharpWebControl();
         }
 
@@ -118,12 +118,12 @@ namespace CefSharpDebug
                 //this.queryResultsWebBrowser.RegisterJsObject("callbackObj", this.reportShareCallbackObject);
 
                 this.queryResultsWebBrowser.FrameLoadEnd += this.ChromiumWebBrowserFrameLoadEnd;
-                this.queryResultsWebBrowser.KeyDown += QueryResultsWebBrowserOnPreviewKeyDown;
+                this.queryResultsWebBrowser.KeyDown += this.QueryResultsWebBrowserOnPreviewKeyDown;
                 //IRequestHandler requestHandler = new WebRequestHandler();
                 //this.queryResultsWebBrowser.RequestHandler = requestHandler;
 
                 this.queryResultsWebBrowser.Loaded += this.ChromiumWebBrowserLoaded;
-                this.queryResultsWebBrowser.PreviewTextInput += queryResultsWebBrowser_PreviewTextInput;
+                this.queryResultsWebBrowser.PreviewTextInput += this.QueryResultsWebBrowserPreviewTextInput;
             }
             catch (Exception exception)
             {
@@ -138,7 +138,7 @@ namespace CefSharpDebug
             this.queryResultsWebBrowser.SendKeyEvent((int)WM.KEYDOWN, param, 0);
         }
 
-        void queryResultsWebBrowser_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        void QueryResultsWebBrowserPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             foreach (var character in e.Text)
             {
@@ -266,7 +266,7 @@ namespace CefSharpDebug
         /// </param>
         private void PopupButton_OnClick(object sender, RoutedEventArgs e)
         {
-            popup.IsOpen = true;
+            //popup.IsOpen = true;
         }
 
 
